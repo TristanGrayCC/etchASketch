@@ -2,11 +2,8 @@ var app = function(){
   var canvas = document.getElementById("main-canvas");
   var context = canvas.getContext("2d");
 
-  canvas.addEventListener("mousedown", getPosition, false);
-
   var x = 300;
   var y = 250;
-
   canvas.addEventListener("mousedown", getPosition, false);
   function getPosition(event){
     x = event.x;
@@ -18,25 +15,25 @@ var app = function(){
   context.moveTo(x,y);
   function moveSelection(evt) {
     switch (evt.keyCode) {
-      case 37: //console.log("left");
-        x -= 5;
+      case 37: console.log("left");
+        if (x - 5 >= 0){x -= 5;
         context.lineTo(x, y);
-        context.stroke();
+        context.stroke()}else{return};
         break;
-      case 39: //console.log("right");
-        x += 5;
+      case 39: console.log("right");
+        if (x + 5 <= 600){x += 5;
         context.lineTo(x, y);
-        context.stroke();
+        context.stroke()}else{return};
         break;
-      case 38: //console.log("up");
-        y -= 5;
+      case 38: console.log("up");
+        if (y - 5 >= 0){y -= 5;
         context.lineTo(x, y);
-        context.stroke();
+        context.stroke()}else{return};
         break;
-      case 40: //console.log("down");
-        y += 5;
+      case 40: console.log("down");
+        if (y + 5 <= 500){y += 5;
         context.lineTo(x, y);
-        context.stroke();
+        context.stroke()}else{return};
         break;
       case 32: console.log("clear");
         context.clearRect(0,0,600,500);
